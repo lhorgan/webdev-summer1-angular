@@ -1,19 +1,17 @@
 <div *ngFor="let widget of widgets">
   <div [ngSwitch]="widget.className" class="widget">
     <div *ngSwitchCase="'heading'">
-      <h1>Heading Widget</h1>
-      <!--<div [ngSwitch]="widget.size">
+      <!--<h1>Heading Widget</h1>-->
+      <h3>{{ widget.name }}</h3>
+      <div [ngSwitch]="widget.size">
         <h1 *ngSwitchCase="'1'">{{widget.text}}</h1>
         <h2 *ngSwitchCase="'2'">{{widget.text}}</h2>
         <h3 *ngSwitchCase="'3'">{{widget.text}}</h3>
-        <h4 *ngSwitchCase="'4'">{{widget.text}}</h4>
-        <h5 *ngSwitchCase="'5'">{{widget.text}}</h5>
-        <h6 *ngSwitchCase="'6'">{{widget.text}}</h6>
-      </div>-->
+      </div>
     </div>
     <div *ngSwitchCase="'link'">
-      <h1>Link Widget</h1>
-      <!--<a href="{{widget.href}}">{{widget.text}}</a>-->
+      <h3>{{ widget.name }}</h3>
+      <a href="{{widget.link}}">{{widget.text}}</a>
     </div>
     <div *ngSwitchCase="'list'">
       <h1>List Widget</h1>
@@ -26,10 +24,12 @@
       </ul>-->
     </div>
     <div *ngSwitchCase="'image'">
-      <h1>Image Widget</h1>
+      <h3>{{ widget.name }}</h3>
+      <img src="{{ widget.image }}" style="width: 200px" />
     </div>
     <div *ngSwitchCase="'paragraph'">
-      <h1>Paragraph Widget</h1>
+      <h3>{{ widget.name }}</h3>
+      <div>{{ widget.text }}</div>
     </div>
   </div>
 </div>
