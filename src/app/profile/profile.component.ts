@@ -13,15 +13,30 @@ export class ProfileComponent implements OnInit {
 
   constructor(private service: UserServiceClient,
               private sectionService: SectionServiceClient,
-              private router: Router) { }
+              private router: Router) {
+
+  }
 
   user = {};
   username;
   password;
+  firstName;
+  lastName;
+  email;
+  userId;
   sections = [];
 
-  update(user) {
-    console.log(user);
+  update() {
+    console.log("made it to update in profile.component.ts");
+    var updatedUser = {
+      username: this.username,
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email
+    }
+    this.service
+        .update(this.userId, updatedUser);
   }
 
   logout() {
@@ -35,8 +50,18 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.service
       .profile()
-      .then(user =>
-        this.username = user.username);
+      .then((user) => {
+        console.log("LE USER");
+        console.log(user);
+        this.user = user;
+        this.password = user.password;
+        this.username = user.username;
+        this.lastName = user.lastName;
+        this.firstName = user.firstName;
+        this.email = user.email;
+        this.userId = user._id;
+        console.log(this.user);
+      });
 
     this.sectionService
       .findSectionsForStudent()

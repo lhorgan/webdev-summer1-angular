@@ -20,6 +20,17 @@ export class UserServiceClient {
     });
   }
 
+  update(id, user) {
+    console.log("updating user...");
+    console.log(user);
+    return fetch('http://localhost:4000/api/user/update/' + id, {
+      method: 'post',
+      body: JSON.stringify(user),
+      headers: { 'content-type': 'application/json' },
+      credentials: 'include'
+    });
+  }
+
   logout() {
     return fetch('http://localhost:4000/api/logout', {
       method: 'post',
