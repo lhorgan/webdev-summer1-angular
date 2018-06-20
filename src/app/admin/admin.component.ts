@@ -13,6 +13,8 @@ export class AdminComponent implements OnInit {
               private sectionService: SectionServiceClient) { }
 
   courseId;
+  sectionName;
+  sectionSeats;
   courses = [];
   sections = [];
 
@@ -32,6 +34,18 @@ export class AdminComponent implements OnInit {
       .sectionService
       .updateSection(id, name, seats)
       .then(() => {
+        this.selectCourse(this.courseId);
+      });
+  }
+
+  createSection() {
+    console.log(this.courseId, this.sectionName, this.sectionSeats);
+    this
+      .sectionService
+      .createSection(this.courseId, this.sectionName, this.sectionSeats)
+      .then(() => {
+        this.sectionName = "";
+        this.sectionSeats = null;
         this.selectCourse(this.courseId);
       });
   }
