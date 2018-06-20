@@ -1,3 +1,25 @@
-<p>
-  admin works!
-</p>
+<div class="container-fluid">
+<h1>Course Navigator ({{courses.length}})</h1>
+
+  <div class="row">
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item active">Courses</li>
+        <li *ngFor="let course of courses"
+            (click)="selectCourse(course.id)"
+            class="list-group-item">
+          {{course.title}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item active">Sections</li>
+        <li *ngFor="let section of sections" class="list-group-item">
+          <input type="text" value="{{ section.name}}" placeholder="Section Name" />
+          <input type="number" value="{{ section.seats }}" placeholder="Seats" min=0 />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
