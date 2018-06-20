@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
 
     this.sectionService
       .findSectionsForStudent()
-      .then(sections => this.sections = sections );
+      .then(sections => this.sections = sections);
   }
 
 }
