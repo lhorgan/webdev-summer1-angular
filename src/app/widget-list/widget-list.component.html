@@ -1,29 +1,35 @@
 <div *ngFor="let widget of widgets">
-  <div [ngSwitch]="widget.widgetType">
-    <div *ngSwitchCase="'HeadingWidget'">
-      <div [ngSwitch]="widget.size">
+  <div [ngSwitch]="widget.className" class="widget">
+    <div *ngSwitchCase="'heading'">
+      <h1>Heading Widget</h1>
+      <!--<div [ngSwitch]="widget.size">
         <h1 *ngSwitchCase="'1'">{{widget.text}}</h1>
         <h2 *ngSwitchCase="'2'">{{widget.text}}</h2>
         <h3 *ngSwitchCase="'3'">{{widget.text}}</h3>
         <h4 *ngSwitchCase="'4'">{{widget.text}}</h4>
         <h5 *ngSwitchCase="'5'">{{widget.text}}</h5>
         <h6 *ngSwitchCase="'6'">{{widget.text}}</h6>
-      </div>
+      </div>-->
     </div>
-    <div *ngSwitchCase="'LinkWidget'">
-      <a href="{{widget.href}}">{{widget.text}}</a>
+    <div *ngSwitchCase="'link'">
+      <h1>Link Widget</h1>
+      <!--<a href="{{widget.href}}">{{widget.text}}</a>-->
     </div>
-    <div *ngSwitchCase="'ListWidget'">
-      <h1>ListWidget</h1>
+    <div *ngSwitchCase="'list'">
+      <h1>List Widget</h1>
+      <!--<h1>ListWidget</h1>
       <ul class="list-group">
         <li class="list-group-item"
-            *ngFor="let item of widget.items.split('|')">
+            *ngFor="let item of widget.items.split(' ')">
           {{item}}
         </li>
-      </ul>
+      </ul>-->
     </div>
-    <div *ngSwitchCase="'Exam'">
-      <h1>Exam Widget</h1>
+    <div *ngSwitchCase="'image'">
+      <h1>Image Widget</h1>
+    </div>
+    <div *ngSwitchCase="'paragraph'">
+      <h1>Paragraph Widget</h1>
     </div>
   </div>
 </div>
