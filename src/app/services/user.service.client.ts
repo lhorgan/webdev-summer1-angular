@@ -46,6 +46,16 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  getLoggedInUser() {
+    return fetch('http://localhost:4000/api/current', {
+      credentials: 'include'
+    })
+    .then(response => response.json())
+    .catch(err => {
+      return null;
+    })
+  }
+
   createUser(username, password) {
     const user = {
       username: username,

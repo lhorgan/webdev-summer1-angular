@@ -3,8 +3,14 @@
     White Board
   </h1>
 
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <div *ngIf="!user; else loggedIn">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </div>
+
+  <ng-template #loggedIn>
+    <a routerLink="/logout">Logout</a>
+  </ng-template>
 
   <app-course-grid></app-course-grid>
 </div>
