@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     this.sectionService.findSectionsForCourse(courseId)
       .then(sections => {
         console.log(sections);
-        this.sections = sections
+        this.sections = sections.map(section => section.section);
       });
   }
 

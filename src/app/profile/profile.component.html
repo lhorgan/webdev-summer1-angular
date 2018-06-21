@@ -22,8 +22,9 @@
 
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
+      {{enrollment.enrollment.section.name}}
+      ({{enrollment.seatsLeft}})
+      ({{enrollment.enrollment.section.seats}})
     </li>
   </ul>
 
