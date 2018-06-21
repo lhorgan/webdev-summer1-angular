@@ -4,13 +4,13 @@
   <ul class="list-group">
     <li *ngFor="let section of sections" class="list-group-item">
       {{section.section.name}} {{section.section.seats}}
-      <button (click)="enroll(section)"
+      <button (click)="enroll(section.section)"
               class="float-right btn btn-primary"
               *ngIf="section.seatsLeft > 0 && !section.enrolled">Enroll</button>
 
-      <button (click)="enroll(section)"
+      <button (click)="unEnroll(section.section._id)"
               class="float-right btn btn-primary"
-              *ngIf="section.enrolled">Un-enroll</button>
+              *ngIf="section.enrolled">Un-ennroll</button>
 
       <button class="float-right btn btn-danger"
               disabled

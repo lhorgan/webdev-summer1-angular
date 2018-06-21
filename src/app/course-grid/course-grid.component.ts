@@ -29,7 +29,7 @@ export class CourseGridComponent implements OnInit {
                                       this.enrolledIn.add(section.enrollment.section.courseId);
                                     });
                                     this.courses = courses.sort((a, b) => {
-                                      return this.enrolledIn.has(a.id);
+                                      return !this.enrolledIn.has(a.id);
                                     });
                                   })
       });
