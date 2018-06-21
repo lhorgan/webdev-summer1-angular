@@ -5,11 +5,15 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{course.title}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"></p>
         <a routerLink="/course/{{course.id}}"
-           class="btn btn-primary">Go somewhere</a>
+           class="btn btn-primary">Modules</a>
         <a routerLink="/course/{{course.id}}/section"
-           class="btn btn-primary">Enroll</a>
+           *ngIf="enrolledIn.has(course.id)"
+           class="btn btn-success" title="Already enrolled in a section">Enroll</a>
+        <a routerLink="/course/{{course.id}}/section"
+           *ngIf="!enrolledIn.has(course.id)"
+           class="btn btn-success">Enroll</a>
       </div>
     </div>
   </div>
