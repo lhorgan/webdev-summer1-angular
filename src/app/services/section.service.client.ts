@@ -19,7 +19,9 @@ export class SectionServiceClient {
   }
 
   findSectionsForCourse(courseId) {
-    return fetch(this.SECTION_URL.replace('COURSEID', courseId))
+    return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
+      credentials: 'include'
+    })
       .then(response => response.json());
   }
 

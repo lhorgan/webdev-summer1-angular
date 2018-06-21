@@ -6,11 +6,15 @@
       {{section.section.name}} {{section.section.seats}}
       <button (click)="enroll(section)"
               class="float-right btn btn-primary"
-              *ngIf="section.seatsLeft > 0; else full">Enroll</button>
+              *ngIf="section.seatsLeft > 0 && !section.enrolled">Enroll</button>
 
-      <ng-template #full>
-          <button class="float-right btn btn-danger" disabled>Full X</button>
-      </ng-template>
+      <button (click)="enroll(section)"
+              class="float-right btn btn-primary"
+              *ngIf="section.enrolled">Un-enroll</button>
+
+      <button class="float-right btn btn-danger"
+              disabled
+              *ngIf="!section.enrolled && section.seatsLeft <= 0">Full X</button>
     </li>
   </ul>
 
