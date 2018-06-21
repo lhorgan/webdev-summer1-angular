@@ -26,28 +26,7 @@ export class ProfileComponent implements OnInit {
   userId;
   sections = [];
 
-  update() {
-    console.log("made it to update in profile.component.ts");
-    var updatedUser = {
-      username: this.username,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email
-    }
-    this.service
-        .update(this.userId, updatedUser);
-  }
-
-  logout() {
-    this.service
-      .logout()
-      .then(() =>
-        this.router.navigate(['login']));
-
-  }
-
-  ngOnInit() {
+  loadUserData() {
     this.service
       .profile()
       .then((user) => {
@@ -70,4 +49,31 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  update() {
+    console.log("made it to update in profile.component.ts");
+    var updatedUser = {
+      username: this.username,
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email
+    }
+    this.service
+        .update(this.userId, updatedUser)
+        .then(() => {
+          this.loadUserData()
+        });
+  }
+
+  logout() {
+    this.service
+      .logout()
+      .then(() =>
+        this.router.navigate(['login']));
+
+  }
+
+  ngOnInit() {
+    this.loadUserData();
+  }
 }

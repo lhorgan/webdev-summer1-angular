@@ -23,8 +23,7 @@
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
       {{enrollment.enrollment.section.name}}
-      ({{enrollment.seatsLeft}})
-      ({{enrollment.enrollment.section.seats}})
+      <span class="float-right">{{enrollment.seatsLeft}} remain of {{enrollment.enrollment.section.seats}} total</span>
     </li>
   </ul>
 
