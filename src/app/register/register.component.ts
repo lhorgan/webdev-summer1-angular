@@ -18,8 +18,14 @@ export class RegisterComponent implements OnInit {
   register(username, password, password2) {
     this.service
       .createUser(username, password)
-      .then(() =>
-        this.router.navigate(['profile']));
+      .then((user) => {
+        if(user) {
+          this.router.navigate(['profile']);
+        }
+        else {
+          alert("That username is taken or something!");
+        }
+      });
   }
 
   ngOnInit() {

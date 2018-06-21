@@ -1,32 +1,36 @@
-<div class="container-fluid">
-<h1>Admin Course Manager ({{courses.length}})</h1>
-
-  <div class="row">
-    <div class="col-6">
-      <ul class="list-group">
-        <li class="list-group-item active">Courses</li>
-        <li *ngFor="let course of courses"
-            (click)="selectCourse(course.id)"
-            class="list-group-item">
-          {{course.title}}
-        </li>
-      </ul>
-    </div>
-    <div class="col-6">
-      <ul class="list-group">
-        <li class="list-group-item active">Sections</li>
-        <li *ngFor="let section of sections" class="list-group-item">
-          <input type="text" value="{{ section.name}}" [(ngModel)]="section.name" placeholder="Section Name" />
-          <input type="number" value="{{ section.seats }}" [(ngModel)]="section.seats" placeholder="Seats" min=0 />
-          <button (click)="updateSection(section._id, section.name, section.seats)">Save</button>
-          <button>X</button>
-        </li>
-        <li class="list-group-item">
-          <input type="text" [(ngModel)]="sectionName" placeholder="Section Name">
-          <input type="number" [(ngModel)]="sectionSeats" placeholder="Seats" min=0>
-          <button (click)="createSection()">+</button>
-        </li>
-      </ul>
+<div *ngIf="user && user.isAdmin">
+  <div class="container-fluid">
+  <h1>Admin Course Manager ({{courses.length}})</h1>
+    <div class="row">
+      <div class="col-6">
+        <ul class="list-group">
+          <li class="list-group-item active">Courses</li>
+          <li *ngFor="let course of courses"
+              (click)="selectCourse(course.id)"
+              class="list-group-item">
+            {{course.title}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="list-group">
+          <li class="list-group-item active">Sections</li>
+          <li *ngFor="let section of sections" class="list-group-item">
+            <input type="text" value="{{ section.name}}" [(ngModel)]="section.name" placeholder="Section Name" />
+            <input type="number" value="{{ section.seats }}" [(ngModel)]="section.seats" placeholder="Seats" min=0 />
+            <button (click)="updateSection(section._id, section.name, section.seats)">Save</button>
+            <button>X</button>
+          </li>
+          <li class="list-group-item">
+            <input type="text" [(ngModel)]="sectionName" placeholder="Section Name">
+            <input type="number" [(ngModel)]="sectionSeats" placeholder="Seats" min=0>
+            <button (click)="createSection()">+</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
+</div>
+<div *ngIf="!user || !user.isAdmin">
+  You are not an admin!  Get out of here!
 </div>

@@ -68,6 +68,8 @@ export class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    });
+    })
+    .then(resp => resp.json())
+    .catch(err => null);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseNavigatorServiceClient} from "../services/course-navigator.service.client";
 import {SectionServiceClient} from "../services/section.service.client";
+import {UserServiceClient} from "../services/user.service.client";
 
 @Component({
   selector: 'app-admin',
@@ -10,13 +11,15 @@ import {SectionServiceClient} from "../services/section.service.client";
 export class AdminComponent implements OnInit {
 
   constructor(private service: CourseNavigatorServiceClient,
-              private sectionService: SectionServiceClient) { }
+              private sectionService: SectionServiceClient,
+              private userService: UserServiceClient) { }
 
   courseId;
   sectionName;
   sectionSeats;
   courses = [];
   sections = [];
+  user;
 
   selectCourse(courseId) {
     this.courseId = courseId;
@@ -51,8 +54,14 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.findAllCourses()
-      .then(courses => this.courses = courses);
+    this.userService.getLoggedInUser()
+                .then(user => {
+                  console.log("here's the logged in user...");
+                  if(user) {
+                    this.user = user;
+                    this.service.findAllCourses()
+                      .then(courses => this.courses = courses);
+                  }
+                })
   }
-
 }
