@@ -20,6 +20,7 @@ export class WidgetListComponent implements OnInit {
     this.context = params;
     this.loadWidgets(params.lessonId);
   }
+
   loadWidgets(lessonId) {
     console.log("THE LESSON ID IS " + lessonId);
     if(lessonId !== undefined) {
@@ -33,6 +34,7 @@ export class WidgetListComponent implements OnInit {
         });
     }
     else {
+      console.log("okie dokie");
       this.widgets = [];
     }
   }
