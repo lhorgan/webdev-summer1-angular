@@ -15,6 +15,10 @@ export class SectionServiceClient {
     return fetch(url, {
       method: 'post',
       credentials: 'include'
+    })
+    .then(resp => resp.json())
+    .catch(err => {
+      return null
     });
   }
 

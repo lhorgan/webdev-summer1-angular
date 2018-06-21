@@ -31,7 +31,7 @@ export class SectionListComponent implements OnInit {
     this
       .service
       .createSection(this.courseId, sectionName, seats)
-      .then(() => {
+      .then((data) => {
         this.loadSections(this.courseId);
       });
   }
@@ -40,9 +40,13 @@ export class SectionListComponent implements OnInit {
     // alert(section._id);
     this.service
       .enrollStudentInSection(section._id)
-      .then(() => {
-        //this.router.navigate(['profile']);
-        this.loadSections(this.courseId);
+      .then((data) => {
+        if(data) {
+          this.loadSections(this.courseId);
+        }
+        else {
+          window.location.replace("/login");
+        }
       });
   }
 
